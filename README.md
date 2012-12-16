@@ -44,5 +44,14 @@ Implements simple asymmetric lenses inspired by the [Asymmetric Lenses in Scala]
     var person = { firstName: "John", lastName: "Doe", address: { street: "Elm", number: 22 }};
     var firstNameL = Lenses.attr('firstName'); // creates a lens for the firstName property;
     var firstNameLCustom = Lenses.new(function(obj) { return obj.firstName; }, function(obj, value) { obj.firstName = value; }); // Creates a custom lens
+    firstNameL.get(person); // returns John
+    firstNameL.set(person, 'Jane') // returns a new object { firstName: "Jane", lastName: "Doe", address: { street: "Elm", number: 22 }};
+
+    // We can compose lenses
+    var addressL = Lenses.attr('address');
+    var streetL = Lenses.attr('street');
+    var personStreetL = Lenses.compose(addressL, streetL);
+    personStreetL.get(person) // returns Elm
+    personStreetL.set(person, 'Oak') // returns a new object { firstName: "John", lastName: "Doe", address: { street: "Oak", number: 22 }};
     
 
