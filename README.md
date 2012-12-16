@@ -27,7 +27,7 @@ Other functions in the Functional namespace are:
 - **sort** - sort a list by a function
 - **findIndex** - find the index of a value using a predicate
 - **findIndices** - find all indexes of a value using a predicate
-- **nub**/**uniquify** - remove duplicates
+- **nub** / **uniquify** - remove duplicates
 - **take** - take first n elements
 - **takeWhile** - take elements while a condition is true
 - **dropWhile** - drop elements while a condition is true
