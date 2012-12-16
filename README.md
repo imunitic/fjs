@@ -23,19 +23,19 @@ Implements functions that work over lists and a simple implementation of partial
 
 Other functions in the Functional namespace are:
 
-- filter - remove elements that satisfy a predicate
-- sort - sort a list by a function
-- findIndex - find the index of a value using a predicate
-- findIndices - find all indexes of a value using a predicate
-- nub/uniquify - remove duplicates
-- take - take first n elements
-- takeWhile - take elements while a condition is true
-- dropWhile - drop elements while a condition is true
-- head - returns the head of a list
-- tail - returns the tails of a list
-- intersect - returns an intersect of two lists
-- partial - partialy apply a function (apply arguments from left)
-- partialRight - partialy apply a function (apply arguments from right)
+- **filter** - remove elements that satisfy a predicate
+- **sort** - sort a list by a function
+- **findIndex** - find the index of a value using a predicate
+- **findIndices** - find all indexes of a value using a predicate
+- **nub**/**uniquify** - remove duplicates
+- **take** - take first n elements
+- **takeWhile** - take elements while a condition is true
+- **dropWhile** - drop elements while a condition is true
+- **head** - returns the head of a list
+- **tail** - returns the tails of a list
+- **intersect** - returns an intersect of two lists
+- **partial** - partialy apply a function (apply arguments from left)
+- **partialRight** - partialy apply a function (apply arguments from right)
 
 Lenses:
 
@@ -57,8 +57,8 @@ Implements simple asymmetric lenses inspired by the [Asymmetric Lenses in Scala]
 
 Other functions in the Lenses namespace are:
 
-- fold - folds over a list of lenses resulting in a new lens
-- modify - given a lens and a function applies that function on the property and sets the result 
-- id - returns an identity lens
+- **fold** - folds over a list of lenses resulting in a new lens
+- **modify** - given a lens and a function applies that function on the property and sets the result 
+- **id** - returns an identity lens
     
 
