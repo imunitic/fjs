@@ -7,6 +7,8 @@ All functions return a new object when making changes
 
 Functional:
 
+Implements functions that work over lists and a simple implementation of partial function application.
+
 
     var numbers = [1,2,3,4,5];
     Functional.map(numbers, function(n) { return n + n; }); // returns [2,4,6,8,10]
@@ -34,5 +36,9 @@ Other functions in the Functional namespace are:
 - intersect
 - partial
 - partialRight
+
+Lenses:
+
+Implements simple asymmetric lenses inspired by the [Asymmetric Lenses in Scala](http://dl.dropbox.com/u/7810909/media/doc/lenses.pdf) paper written by Tony Morris
    
 
