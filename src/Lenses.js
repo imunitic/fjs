@@ -38,6 +38,12 @@
     _.fold = function (seq) {
         return Functional.foldLeft(seq, _.id(), Functional.partial(_.compose));
     };
+	
+	_.modify = function(l, f) {
+		return function(obj) {
+			return l.set(obj, f(l.get(obj)));
+		}
+	};
 
 
     this.Lenses = _;
