@@ -1,7 +1,8 @@
 fjs
 ===
 
-Functional JavaScript experiments
+Functional JavaScript experiments.
+
 All functions return a new object when making changes
 
 
