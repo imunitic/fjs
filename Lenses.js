@@ -36,7 +36,7 @@
     };
 
     _.fold = function (seq) {
-        return foldLeft(seq, _.id(), partial(_.compose));
+        return Functional.foldLeft(seq, _.id(), Functional.partial(_.compose));
     };
 
 
@@ -57,19 +57,4 @@
         this.get = get;
         this.set = set;
     }
-    function foldLeft(sequence, init, fn) {
-        var result = init;
-        for (var i = 0, sl = sequence.length; i < sl; ++i) {
-            result = fn(result, sequence[i]);
-        }
-        return result;
-    }
-    function partial(fn) {
-        var args = Array.prototype.slice.call(arguments, 1);
-        return function () {
-            var ar = args.concat(Array.prototype.slice.call(arguments))
-            return fn.apply(null, ar);
-        };
-    }
-    function jsonCopy(obj) { return JSON.parse(JSON.stringify(obj)); }
 })()

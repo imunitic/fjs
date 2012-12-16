@@ -102,14 +102,14 @@
         return _.collect(seq1, fn);
     };
 
-    _.partialyLeft = function (fn) {
+    _.partial = function (fn) {
         var args = Array.prototype.slice.call(arguments, 1);
         return function () {
             var ar = args.concat(Array.prototype.slice.call(arguments))
             return fn.apply(null, ar);
         };
     };
-    _.partialyRight = function (fn) {
+    _.partialRight = function (fn) {
         var args = Array.prototype.slice.call(arguments, 1);
         return function () {
             var ar = Array.prototype.slice.call(arguments).concat(args);
