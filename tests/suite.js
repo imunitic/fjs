@@ -86,11 +86,8 @@ test("modify: applies a function to a property which is then set by a lens", fun
 			number: 22
 		}
 	};
-	var personStreetL = Lenses.new(
-		function(obj) { return obj.address.street; },
-		function(obj, value) { obj.address.street = value; }
-	);
 	
+	var personStreetL = Lenses.compose(Lenses.attr('address'), Lenses.attr('street'));	
 	var setPersonStreet = Lenses.modify(personStreetL, function(street) { return "changed " + street });
 	var expected = {
 		firstName: 'John',
