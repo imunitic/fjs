@@ -5,8 +5,8 @@ Functional JavaScript experiments
 All functions return a new object when making changes
 
 
-Examples:
-~~~~~~~~~~
+Functional:
+
 
     var numbers = [1,2,3,4,5];
     Functional.map(numbers, function(n) { return n + n; }); // returns [2,4,6,8,10]
