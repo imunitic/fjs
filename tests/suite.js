@@ -1,3 +1,5 @@
+// Functional tests
+module('Functional tests');
 test('uniquify: returns a list of unique values' , function() {
 	deepEqual([1,2,3], Functional.uniquify([1,2,2,3,3,3]));
 });
@@ -36,4 +38,70 @@ test('map: map over a list and execute a function on every element returning a n
 	deepEqual([1,2,3,4], list);
 });
 
+// Lenses tests
+module('Lenses tests');
+test('attr: creates a lens for a property', function() {
+	var person = {
+		firstName: 'John',
+		lastName: 'Doe'
+	};
+	
+	var firstNameL = Lenses.attr('firstName');
+	equal('John', firstNameL.get(person));
+	deepEqual({firstName: 'Jane', lastName: 'Doe'}, firstNameL.set(person, 'Jane'));
+});
+
+test('compose: composes two lenses to create a new lens', function() {
+	var person = {
+		firstName: 'John',
+		lastName: 'Doe',
+		address: {
+			street: 'Elm',
+			number: 22
+		}
+	};
+	
+	var addressL = Lenses.attr('address');
+	var streetL = Lenses.attr('street');
+	var personStreet = Lenses.compose(addressL, streetL);	
+	equal('Elm', personStreet.get(person));
+	
+	var expected = {
+		firstName: 'John',
+		lastName: 'Doe',
+		address: {
+			street: 'Oak',
+			number: 22
+		}
+	};	
+	deepEqual(expected, personStreet.set(person, 'Oak'));
+});
+
+test("modify: applies a function to a property which is then set by a lens", function() {
+	var person = {
+		firstName: 'John',
+		lastName: 'Doe',
+		address: {
+			street: 'Elm',
+			number: 22
+		}
+	};
+	var personStreetL = Lenses.new(
+		function(obj) { return obj.address.street; },
+		function(obj, value) { obj.address.street = value; }
+	);
+	
+	var setPersonStreet = Lenses.modify(personStreetL, function(street) { return "changed " + street });
+	var expected = {
+		firstName: 'John',
+		lastName: 'Doe',
+		address: {
+			street: 'changed Elm',
+			number: 22
+		}
+	};	
+	deepEqual(expected, setPersonStreet(person));
+	notDeepEqual(person, expected);
+	
+});
 
