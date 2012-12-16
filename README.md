@@ -62,3 +62,8 @@ Other functions in the Lenses namespace are:
 - **id** - returns an identity lens
     
 
+## NOTE
+
+Lenses uses an internal copy function that attaches to the Object prototype if the function does not exists. The function uses a simple JSON.parse(JSON.stringify(obj)) to copy an object. This does not copy functions on the object. If that is a problem for you you can provide your own implementation by overriding Object.prototype.copy
+
+I'm open for better suggestions as I'm in no way a JavaScript expert.
