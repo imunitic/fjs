@@ -41,4 +41,8 @@ Lenses:
 
 Implements simple asymmetric lenses inspired by the [Asymmetric Lenses in Scala](http://dl.dropbox.com/u/7810909/media/doc/lenses.pdf) paper written by Tony Morris
    
+    var person = { firstName: "John", lastName: "Doe", address: { street: "Elm", number: 22 }};
+    var firstNameL = Lenses.attr('firstName'); // creates a lens for the firstName property;
+    var firstNameLCustom = Lenses.new(function(obj) { return obj.firstName; }, function(obj, value) { obj.firstName = value; }); // Creates a custom lens
+    
 
