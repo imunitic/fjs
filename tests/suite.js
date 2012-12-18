@@ -77,6 +77,32 @@ test('compose: composes two lenses to create a new lens', function() {
 	deepEqual(expected, personStreet.set(person, 'Oak'));
 });
 
+test('fold: folds over a collection of lenses to create a new lens', function() {
+	var person = {
+		firstName: 'John',
+		lastName: 'Doe',
+		address: {
+			street: 'Elm',
+			number: 22
+		}
+	};
+	
+	var addressL = Lenses.attr('address');
+	var streetL = Lenses.attr('street');
+	var personStreet = Lenses.fold([addressL, streetL]);	
+	equal('Elm', personStreet.get(person));
+	
+	var expected = {
+		firstName: 'John',
+		lastName: 'Doe',
+		address: {
+			street: 'Oak',
+			number: 22
+		}
+	};	
+	deepEqual(expected, personStreet.set(person, 'Oak'));
+});
+
 test("modify: applies a function to a property which is then set by a lens", function() {
 	var person = {
 		firstName: 'John',
