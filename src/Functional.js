@@ -74,6 +74,14 @@
         return sequence.sort(fn);
     };
 
+	_.any = function (sequence, fn) {
+        return _.findIndex(sequence, fn) > -1;
+    };
+    
+	_.all = function (sequence, fn) {
+        return _.findIndices(sequence, fn).length == sequence.length;
+    }
+	
     _.findIndex = function (sequence, fn) {
         for (var i = 0, sl = sequence.length; i < sl; ++i) {
             if (fn(sequence[i])) return i;
