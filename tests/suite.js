@@ -38,6 +38,16 @@ test('map: map over a list and execute a function on every element returning a n
 	deepEqual([1,2,3,4], list);
 });
 
+test('any: test if any of the elements in the list satisfy the predicate', function() {
+	var list = [1,2,3,4];	
+	equal(true, Functional.any(list, function(n) { return n > 2; }));
+});
+
+test('all: test if all elements in the list satisfy the predicate', function() {
+	var list = [1,2,3,4];	
+	equal(false, Functional.all(list, function(n) { return n > 2; }));
+});
+
 // Lenses tests
 module('Lenses tests');
 test('attr: creates a lens for a property', function() {
